@@ -1,6 +1,7 @@
 # 创建环境
 
 ```
+source <conda root path>/etc/profile.d/conda.sh
 conda create -n pytorch python=3.10
 conda activate pytorch
 conda env list
@@ -51,7 +52,7 @@ https://pypi.tuna.tsinghua.edu.cn/simple
 https://mirrors.aliyun.com/pypi/simple/
 https://mirrors.163.com/pypi/simple/  
 
-pip installtorch==1.8.1 -i https://mirrors.aliyun.com/pypi/simple/
+pip install torch==1.8.1 -i https://mirrors.aliyun.com/pypi/simple/
 ```
 
 ## 将项目导入github
@@ -67,4 +68,44 @@ git pull --rebase origin master  # 把远端仓库中的代码 拉到本地进�
 cv2安装
 ```shell
 pip install opencv-python
+```
+
+
+
+conda config --set show_channel_urls yes  
+vim ~/.condarc
+```shell 
+channels:
+  - defaults
+show_channel_urls: true
+default_channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
+custom_channels:
+  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+
+```
+清除索引缓存
+conda clean --all --yes  
+conda clean -i
+
+```angular2html
+创建虚拟环境：conda create -n 环境名称 python=版本号
+查看已有虚拟环境：conda env list
+激活虚拟环境：conda activate 环境名称
+删除虚拟环境：conda remove -n 环境名称 --all
+查看当前环境下已安装的包：conda list
+导出当前环境下的包：conda env export > environment.yml
+根据导出的包安装环境：conda env create -f environment.yml
+安装包：conda install 包名
+安装下载到本地的包：conda install --use-local  包路径
+卸载当前环境下包：conda uninstall 包名
+卸载指定虚拟环境中的包：conda remove --name 环境名称 包名
 ```

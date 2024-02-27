@@ -1,3 +1,4 @@
+import torch.backends.cuda
 from torch.utils.data import Dataset
 from PIL import Image
 import cv2
@@ -34,3 +35,5 @@ train_dataset = ants_dataset + bees_dataset # 实现数据集的拼接
 
 img, label = train_dataset[0]
 img.show()
+
+torch.backends.cuda.enable_flash_sdp()
